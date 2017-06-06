@@ -1,5 +1,18 @@
 <pre>
 
+Version 0.1.2 - 06/06/2017
+==========================
+
+Added
+-----
+img.mapa.png
+
+Updated
+-------
+> README.md
+> CHANGELOG.md
+---
+
 Version 0.1.1 - 06/06/2017
 ==========================
 

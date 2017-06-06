@@ -15,6 +15,8 @@
  */
 package org.japo.java.forms;
 
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -23,6 +25,7 @@ import java.util.Arrays;
 import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.japo.java.components.BackgroundPanel;
 import org.japo.java.lib.UtilesApp;
 import org.japo.java.lib.UtilesSwing;
 
@@ -52,6 +55,11 @@ public class GUI extends javax.swing.JFrame {
         // Restaurar Estado Previo
         restaurarEstado();
 
+        // Asignar panel contenedor
+        URL urlPNL = ClassLoader.getSystemResource("img/mapa.png");
+        Image imgPNL = new ImageIcon(urlPNL).getImage();
+        setContentPane(new BackgroundPanel(imgPNL));
+
         // Otras inicializaciones
     }
 
@@ -61,6 +69,9 @@ public class GUI extends javax.swing.JFrame {
         URL urlICN = ClassLoader.getSystemResource("img/favicon.png");
         setIconImage(new ImageIcon(urlICN).getImage());
 
+        // Ventana Transparente
+        setBackground(new Color(0, 0, 0, 0));
+        
         // Otras inicializaciones
     }
 
@@ -101,6 +112,7 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Here comes the Title");
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -159,7 +171,7 @@ public class GUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +185,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(psfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblPass, lblUser, psfPass, txfUser});
@@ -182,8 +194,8 @@ public class GUI extends javax.swing.JFrame {
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUser)
                     .addComponent(txfUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,7 +207,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblPass, lblUser, psfPass, txfUser});
@@ -270,8 +282,8 @@ public class GUI extends javax.swing.JFrame {
             UtilesSwing.terminarPrograma(this);
         }
     }
-    
-        // Evento de Teclado - Respuesta
+
+    // Evento de Teclado - Respuesta
     public void procesarTecla(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             e.consume();
